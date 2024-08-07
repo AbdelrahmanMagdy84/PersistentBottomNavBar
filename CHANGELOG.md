@@ -58,7 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - PersistentBottomNavBarItem argument `activeContentColor`'s name has been changed to `activeColorSecondary`. Functionality remains the same.
     - PersistentBottomNavBarItem argument `titleStyle`'s name has been changed to `textStyle`. Functionality remains the same.
 
-## [2.1.0] - 2020-10-02
+## [2.12.0] - 2020-10-02
 
 - Added `TextStyle` property for title in the PersistentBottomNavBarItem.
 - Added `margin` property for the navigation bar.

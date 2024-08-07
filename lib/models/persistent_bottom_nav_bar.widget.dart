@@ -2,12 +2,12 @@ part of persistent_bottom_nav_bar;
 
 class PersistentBottomNavBar extends StatelessWidget {
   const PersistentBottomNavBar({
+    required this.onAnimationComplete,
     final Key? key,
     this.margin,
     this.confineToSafeArea,
     this.customNavBarWidget,
     this.hideNavigationBar,
-    this.onAnimationComplete,
     this.neumorphicProperties = const NeumorphicProperties(),
     this.navBarEssentials,
     this.navBarDecoration,
@@ -23,7 +23,7 @@ class PersistentBottomNavBar extends StatelessWidget {
   final Widget? customNavBarWidget;
   final bool? confineToSafeArea;
   final bool? hideNavigationBar;
-  final Function(bool, bool)? onAnimationComplete;
+  final Function({required bool x, required bool y}) onAnimationComplete;
   final bool? isCustomWidget;
 
   Padding _navBarWidget() => Padding(
@@ -180,9 +180,7 @@ class PersistentBottomNavBar extends StatelessWidget {
       : OffsetAnimation(
           hideNavigationBar: hideNavigationBar,
           navBarHeight: navBarEssentials!.navBarHeight,
-          onAnimationComplete: (final isAnimating, final isComplete) {
-            onAnimationComplete!(isAnimating, isComplete);
-          },
+          onAnimationComplete: onAnimationComplete,
           child: _navBarWidget(),
         );
 
@@ -219,7 +217,7 @@ class PersistentBottomNavBar extends StatelessWidget {
           hideNavigationBar: hideNavigationBar ?? this.hideNavigationBar,
           customNavBarWidget: customNavBarWidget ?? this.customNavBarWidget,
           onAnimationComplete:
-              onAnimationComplete as dynamic Function(bool, bool)? ??
+              onAnimationComplete as dynamic Function({bool? x, bool? y})? ??
                   this.onAnimationComplete,
           navBarEssentials: navBarEssentials ?? this.navBarEssentials,
           isCustomWidget: isCustomWidget ?? this.isCustomWidget,

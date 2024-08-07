@@ -644,18 +644,7 @@ class _PersistentTabViewState extends State<PersistentTabView> {
           navBarStyle: widget.navBarStyle,
           neumorphicProperties: widget.neumorphicProperties,
           customNavBarWidget: widget.customWidget,
-          onAnimationComplete: (final isAnimating, final isCompleted) {
-            if (_isAnimating != isAnimating) {
-              setState(() {
-                _isAnimating = isAnimating;
-              });
-            }
-            if (_isCompleted != isCompleted) {
-              setState(() {
-                _isCompleted = isCompleted;
-              });
-            }
-          },
+          onAnimationComplete: newMethod,
         ),
         tabBuilder: (final context, final index) => SafeArea(
           top: false,
@@ -671,6 +660,19 @@ class _PersistentTabViewState extends State<PersistentTabView> {
           child: _buildScreen(index),
         ),
       );
+
+  void newMethod({required final bool x, required final bool y}) {
+    if (_isAnimating != x) {
+      setState(() {
+        _isAnimating = x;
+      });
+    }
+    if (_isCompleted != y) {
+      setState(() {
+        _isCompleted = y;
+      });
+    }
+  }
 
   @override
   Widget build(final BuildContext context) {
